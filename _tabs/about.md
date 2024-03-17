@@ -12,8 +12,14 @@ Hello! I'm a passionate Cyber Security Consultant and enthusiast, dedicated to e
 
 I regularly engage with TryHackMe, an online platform for learning and teaching cyber security, all through hands-on experience. Here, you'll find detailed walkthroughs of challenges and rooms I've completed, providing insights into my problem-solving approach and technical expertise.
 
-- **[Room Name 1](#)**: A brief overview of the challenge and my unique approach to solving it.
-- **[Room Name 2](#)**: How I tackled this room, including any scripts or tools I developed along the way.
+<ul>
+{% assign recent_walkthroughs = site.walkthroughs | sort: 'date' | reverse | limit: 3 %}
+{% for walkthrough in recent_walkthroughs %}
+  <li>
+    <a href="{{ site.baseurl }}{{ walkthrough.url }}">{{ walkthrough.title }}</a> - {{ walkthrough.date | date: "%B %d, %Y" }}
+  </li>
+{% endfor %}
+</ul>
 
 ## Events
 
