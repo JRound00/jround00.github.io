@@ -1,44 +1,47 @@
 ---
 layout: home
-# Index page
+title: "Cyber Security Portfolio"
 ---
+
 # Welcome to My Cyber Security Portfolio
 
-Hello! I'm a passionate Cyber Security Consultant and enthusiast, dedicated to exploring the depths of cyber security through practical engagement and continuous learning. This portfolio showcases my journey, including TryHackMe walkthroughs, participation in cyber security events, and various projects that highlight my skills and contributions to the field.
+I'm a passionate **Cyber Security Consultant** dedicated to exploring the depths of cyber security through practical engagement and continuous learning. This portfolio showcases my journey, skills, and contributions to the field.
 
-## TryHackMe Walkthroughs
+## My Role
 
-I regularly engage with TryHackMe, an online platform for learning and teaching cyber security, all through hands-on experience. Here, you'll find detailed walkthroughs of challenges and rooms I've completed, providing insights into my problem-solving approach and technical expertise.
+As a Cyber Security Consultant, I specialize in [specific areas of expertise, e.g., penetration testing, security audits, etc.]. My work involves [brief description of your job responsibilities].
 
-<ul>
-{% assign recent_walkthroughs = site.walkthroughs | sort: 'date' | reverse | limit: 3 %}
-{% for walkthrough in recent_walkthroughs %}
-  <li>
-    <a href="{{ site.baseurl }}{{ walkthrough.url }}">{{ walkthrough.title }}</a> - {{ walkthrough.date | date: "%B %d, %Y" }}
-  </li>
-{% endfor %}
-</ul>
+## Featured Projects
 
-## Events
+Here are some of the projects I'm most proud of:
 
-Participation in cyber security events is crucial for staying up-to-date with the latest threats and technologies. I've had the privilege of attending and sometimes speaking at various conferences and workshops.
+- **[Project Name 1](#project-link)**: A brief overview of the project and the problem it solves.
+- **[Project Name 2](#project-link)**: Description of your contribution and its impact.
 
-- **[Event Name 1](#)**: My takeaways from this event and how it has influenced my approach to security.
-- **[Event Name 2](#)**: A summary of my presentation or workshop, including any resources I shared.
+## My TryHackMe Badge
 
-## Projects
+![TryHackMe Badge](path/to/your/tryhackme-badge.png)
 
-My projects range from developing security tools to contributing to open-source security software. These initiatives demonstrate my technical capabilities and commitment to improving cyber security practices.
+Proudly earned through continuous learning and practical application in cyber security challenges.
 
-- **[Project Name 1](#)**: Description of the project, the problem it solves, and the technologies used.
-- **[Project Name 2](#)**: An overview of my contribution to this project and its impact on the community or end-users.
+## Recent Posts Gallery
 
-## Connect With Me
+<div class="gallery">
+    {% for post in site.posts limit:4 %}
+    <div class="gallery-item">
+        <a href="{{ post.url }}">
+            <img src="{{ post.feature_image }}" alt="{{ post.title }}">
+            <h3>{{ post.title }}</h3>
+        </a>
+        <p>{{ post.excerpt }}</p>
+    </div>
+    {% endfor %}
+</div>
 
-I'm always open to collaborating on projects or sharing knowledge with fellow security enthusiasts. Feel free to connect with me:
+---
+
+Connect with me for collaborations or to learn more:
 
 - **Email**: [your-email@example.com](mailto:your-email@example.com)
 - **LinkedIn**: [Your LinkedIn Profile](https://www.linkedin.com)
 - **GitHub**: [Your GitHub Profile](https://github.com)
-
-Thank you for visiting my portfolio. Let's work together to make the digital world a safer place.
