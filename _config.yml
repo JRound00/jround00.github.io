@@ -147,6 +147,10 @@ collections:
     output: true
     sort_by: order
 
+  walkthroughs:
+    output: true
+    permalink: /walkthroughs/:path/
+
 defaults:
   - scope:
       path: "" # An empty string here means all files in the project
