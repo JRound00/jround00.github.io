@@ -75,12 +75,12 @@ collections:
   walkthroughs:
     output: true
     permalink: /walkthroughs/:path/
-  blogs: # Added blogs collection
+  blogs:
     output: true
-    permalink: /blog/:year/:month/:day/:title/
-  projects: # Ensure projects collection is defined if you have project content
+    permalink: /blogs/:name/
+  projects:
     output: true
-    permalink: /projects/:path/
+    permalink: /projects/:name/
 
 defaults:
   - scope:
