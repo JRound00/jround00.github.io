@@ -6,7 +6,7 @@ categories: [Threat Intelligence]
 tags: [Zero Day Vulnerabilities, Network Security, Malware Analysis]
 ---
 
-# Understanding Zero Day Vulnerabilities
+# Understanding Zero Day Vulnerabilities test
 
 Zero day vulnerabilities represent a significant threat in the cybersecurity landscape. These vulnerabilities are called "zero day" because they are unknown to the software vendor or have no patch available at the time of discovery. This post explores the nature of zero day vulnerabilities, their impact, and strategies for mitigation.
 
