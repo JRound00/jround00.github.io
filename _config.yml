@@ -77,10 +77,10 @@ collections:
     permalink: /walkthroughs/:path/
   blogs:
     output: true
-    permalink: /blogs/:name/
+    permalink: /Blogs/:path/
   projects:
     output: true
-    permalink: /projects/:name/
+    permalink: /Projects/:path/
 
 defaults:
   - scope:
@@ -90,7 +90,7 @@ defaults:
       layout: post
       comments: true
       toc: true
-      permalink: /blog/:year/:month/:day/:title/
+      permalink: /Blogs/:year/:month/:day/:title/
   - scope:
       path: _drafts
     values:
