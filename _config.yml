@@ -1,3 +1,4 @@
+
 # The Site Configuration
 
 theme: jekyll-theme-chirpy
@@ -133,5 +134,3 @@ exclude:
   - LICENSE
   - rollup.config.js
   - package*.json
-
-
