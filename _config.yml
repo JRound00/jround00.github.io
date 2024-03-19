@@ -76,6 +76,13 @@ collections:
   walkthroughs:
     output: true
     permalink: /walkthroughs/:path/
+  blogs:
+    output: true
+    permalink: /blogs/:path/
+  projects:
+    output: true
+    permalink: /projects/:path/
+    
 
 defaults:
   - scope:
