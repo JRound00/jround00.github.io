@@ -76,18 +76,6 @@ collections:
   walkthroughs:
     output: true
     permalink: /walkthroughs/:path/
-  blogs:
-    output: true
-    permalink: /Blogs/:path/
-  projects:
-    output: true
-    permalink: /Projects/:path/
-  categories:
-    output: true
-  events:
-    output: true
-  tags:
-    output: true
 
 defaults:
   - scope:
