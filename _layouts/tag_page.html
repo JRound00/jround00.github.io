@@ -1,0 +1,11 @@
+---
+layout: default
+---
+<div class="page-content">
+  <h1>Blogs tagged with "{{ page.tag }}"</h1>
+  <ul>
+    {% for blog in site.tags[page.tag] %}
+      <li><a href="{{ site.baseurl }}{{ blog.url }}">{{ blog.title }}</a></li>
+    {% endfor %}
+  </ul>
+</div>
