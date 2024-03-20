@@ -2,8 +2,53 @@
 layout: default
 refactor: true
 ---
-<ul>
-    {% for blog in site.blogs %}
-      <li><a href="{{ blog.url }}">{{ blog.title }}</a></li>
-    {% endfor %}
-  </ul>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ page.title | default: site.title }}</title>
+</head>
+<body>
+    <header>
+        <h1>Welcome to My Portfolio & Blog</h1>
+        <p>I'm James Round, a Cyber Security enthusiast and professional. Here, I share my projects, insights, and walkthroughs in the world of Cyber Security.</p>
+    </header>
+
+    <section id="featured-projects">
+        <h2>Featured Projects</h2>
+        <ul>
+            {% for project in site.data.projects limit:3 %}
+            <li>
+                <h3><a href="{{ project.url }}">{{ project.name }}</a></h3>
+                <p>{{ project.description }}</p>
+            </li>
+            {% endfor %}
+        </ul>
+        <p><a href="/projects">View all projects</a></p>
+    </section>
+
+    <section id="recent-posts">
+        <h2>Recent Blog Posts</h2>
+        <ul>
+            {% for blog in site.blogs limit:5 %}
+            <li>
+                <a href="{{ blog.url }}">{{ blog.title }}</a>
+                <p>{{ blog.summary }}</p>
+            </li>
+            {% endfor %}
+        </ul>
+        <p><a href="/blogs">View all blog posts</a></p>
+    </section>
+
+    <section id="about-me">
+        <h2>About Me</h2>
+        <p>With a passion for Cyber Security, I've embarked on a journey to explore and understand the depths of network security, ethical hacking, and more. My blog serves as a platform to share my knowledge, projects, and the lessons I've learned along the way.</p>
+        <p><a href="/about">Learn more about me</a></p>
+    </section>
+
+    <footer>
+        <p>Connect with me on <a href="https://github.com/JRound00">GitHub</a> and <a href="https://www.linkedin.com/in/jamesr2000">LinkedIn</a>.</p>
+    </footer>
+</body>
+</html>
