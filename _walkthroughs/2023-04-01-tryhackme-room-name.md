@@ -1,7 +1,7 @@
 ---
 title: "TryHackMe Walkthrough: Room Name"
 date: 2023-04-01
-categories: []
+categories: [Tutorial]
 tags: [TryHackMe]
 layout: post
 ---

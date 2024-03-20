@@ -1,0 +1,11 @@
+---
+layout: default
+refactor: true
+---
+
+{% assign filtered_walkthroughs = site.walkthroughs | where: "categories", page.category %}
+<ul>
+  {% for walkthrough in filtered_walkthroughs %}
+    <li><a href="{{ walkthrough.url }}">{{ walkthrough.title }}</a></li>
+  {% endfor %}
+</ul>
