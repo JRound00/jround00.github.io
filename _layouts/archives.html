@@ -26,11 +26,28 @@ refactor: true
 {% endfor %}
 
 ## Projects
-<!-- Repeat the same structure for projects -->
 {% assign projects_by_year = site.projects | sort: 'date' | reverse %}
-<!-- Insert the Liquid templating logic similar to the Blogs section -->
+{% assign projects_by_year = site.projects | sort: 'date' | reverse %}
+{% for project in projects_by_year %}
+  {% unless project.previous %}
+    <h2>{{ project.date | date: '%Y' }}</h2>
+  {% else %}
+    {% unless project.date | date: '%Y' == project.previous.date | date: '%Y' %}
+      <h2>{{ project.date | date: '%Y' }}</h2>
+    {% endunless %}
+  {% endunless %}
+  <h3>{{ project.date | date: '%B' }}</h3>
+  <ul>
+    {% for project in projects_by_year %}
+      {% if project.date | date: '%Y' == project.previous.date | date: '%Y' and project.date | date: '%B' == project.previous.date | date: '%B' %}
+        <li><a href="{{ project.url | prepend: site.baseurl }}">{{ project.title }}</a> - {{ project.date | date: "%B %d, %Y" }}</li>
+      {% endif %}
+    {% endfor %}
+  </ul>
+{% endfor %}
+
 
 ## Walkthroughs
 <!-- Repeat the same structure for walkthroughs -->
 {% assign walkthroughs_by_year = site.walkthroughs | sort: 'date' | reverse %}
-<!-- Insert the Liquid templating logic similar to the Blogs section -->
+<!-- Insert the Liquid templating logic similar to the projects section -->
