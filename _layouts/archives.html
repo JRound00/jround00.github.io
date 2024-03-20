@@ -46,7 +46,61 @@ refactor: true
             {% endfor %}
         </section>
 
-        <!-- Repeat the structure for Projects and Walkthroughs sections -->
+        <section class="archive-section">
+            <h2 class="archive-title">projects</h2>
+            {% assign projects_by_year = site.projects | sort: 'date' | reverse %}
+            {% for project in projects_by_year %}
+                {% capture current_year %}{{ project.date | date: '%Y' }}{% endcapture %}
+                {% capture next_year %}{{ project.previous.date | date: '%Y' }}{% endcapture %}
+                {% if forloop.first or current_year != next_year %}
+                    <div class="year-group">
+                        <h3 class="year-title">{{ current_year }}</h3>
+                {% endif %}
+                {% capture current_month %}{{ project.date | date: '%B' }}{% endcapture %}
+                {% capture next_month %}{{ project.previous.date | date: '%B' }}{% endcapture %}
+                {% if forloop.first or current_month != next_month or current_year != next_year %}
+                    <div class="month-group">
+                        <h4 class="month-title">{{ current_month }}</h4>
+                        <ul class="post-list">
+                {% endif %}
+                            <li class="post-item"><a href="{{ project.url | prepend: site.baseurl }}">{{ project.title }}</a> - {{ project.date | date: "%B %d, %Y" }}</li>
+                {% if forloop.last or current_month != next_month or current_year != next_year %}
+                        </ul>
+                    </div>
+                {% endif %}
+                {% if forloop.last or current_year != next_year %}
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </section>
+
+        <section class="archive-section">
+            <h2 class="archive-title">walkthroughs</h2>
+            {% assign walkthroughs_by_year = site.walkthroughs | sort: 'date' | reverse %}
+            {% for walkthrough in walkthroughs_by_year %}
+                {% capture current_year %}{{ walkthrough.date | date: '%Y' }}{% endcapture %}
+                {% capture next_year %}{{ walkthrough.previous.date | date: '%Y' }}{% endcapture %}
+                {% if forloop.first or current_year != next_year %}
+                    <div class="year-group">
+                        <h3 class="year-title">{{ current_year }}</h3>
+                {% endif %}
+                {% capture current_month %}{{ walkthrough.date | date: '%B' }}{% endcapture %}
+                {% capture next_month %}{{ walkthrough.previous.date | date: '%B' }}{% endcapture %}
+                {% if forloop.first or current_month != next_month or current_year != next_year %}
+                    <div class="month-group">
+                        <h4 class="month-title">{{ current_month }}</h4>
+                        <ul class="post-list">
+                {% endif %}
+                            <li class="post-item"><a href="{{ walkthrough.url | prepend: site.baseurl }}">{{ walkthrough.title }}</a> - {{ walkthrough.date | date: "%B %d, %Y" }}</li>
+                {% if forloop.last or current_month != next_month or current_year != next_year %}
+                        </ul>
+                    </div>
+                {% endif %}
+                {% if forloop.last or current_year != next_year %}
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </section>
 
     </div>
 </body>
