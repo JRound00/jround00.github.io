@@ -47,20 +47,20 @@ refactor: true
 
 
 ## Walkthroughs
-{% assign wallthroughs_by_year = site.wallthroughs | sort: 'date' | reverse %}
-{% for wallthrough in wallthroughs_by_year %}
-  {% unless wallthrough.previous %}
-    <h2>{{ wallthrough.date | date: '%Y' }}</h2>
+{% assign Walkthroughs_by_year = site.Walkthroughs | sort: 'date' | reverse %}
+{% for Walkthrough in Walkthroughs_by_year %}
+  {% unless Walkthrough.previous %}
+    <h2>{{ Walkthrough.date | date: '%Y' }}</h2>
   {% else %}
-    {% unless wallthrough.date | date: '%Y' == wallthrough.previous.date | date: '%Y' %}
-      <h2>{{ wallthrough.date | date: '%Y' }}</h2>
+    {% unless Walkthrough.date | date: '%Y' == Walkthrough.previous.date | date: '%Y' %}
+      <h2>{{ Walkthrough.date | date: '%Y' }}</h2>
     {% endunless %}
   {% endunless %}
-  <h3>{{ wallthrough.date | date: '%B' }}</h3>
+  <h3>{{ Walkthrough.date | date: '%B' }}</h3>
   <ul>
-    {% for wallthrough in wallthroughs_by_year %}
-      {% if wallthrough.date | date: '%Y' == wallthrough.previous.date | date: '%Y' and wallthrough.date | date: '%B' == wallthrough.previous.date | date: '%B' %}
-        <li><a href="{{ wallthrough.url | prepend: site.baseurl }}">{{ wallthrough.title }}</a> - {{ wallthrough.date | date: "%B %d, %Y" }}</li>
+    {% for Walkthrough in Walkthroughs_by_year %}
+      {% if Walkthrough.date | date: '%Y' == Walkthrough.previous.date | date: '%Y' and Walkthrough.date | date: '%B' == Walkthrough.previous.date | date: '%B' %}
+        <li><a href="{{ Walkthrough.url | prepend: site.baseurl }}">{{ Walkthrough.title }}</a> - {{ Walkthrough.date | date: "%B %d, %Y" }}</li>
       {% endif %}
     {% endfor %}
   </ul>
