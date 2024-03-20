@@ -2,28 +2,31 @@
 layout: default
 refactor: true
 ---
+# Archives
 
+This page lists all blogs, projects, and walkthroughs archived by year and month.
 
 
 ## Blogs
 {% assign blogs_by_year = site.blogs | sort: 'date' | reverse %}
 {% for blog in blogs_by_year %}
-  {% unless blog.previous %}
-    <h2>{{ blog.date | date: '%Y' }}</h2>
-  {% else %}
-    {% unless blog.date | date: '%Y' == blog.previous.date | date: '%Y' %}
-      <h2>{{ blog.date | date: '%Y' }}</h2>
-    {% endunless %}
-  {% endunless %}
-  <h3>{{ blog.date | date: '%B' }}</h3>
-  <ul>
-    {% for blog in blogs_by_year %}
-      {% if blog.date | date: '%Y' == blog.previous.date | date: '%Y' and blog.date | date: '%B' == blog.previous.date | date: '%B' %}
-        <li><a href="{{ blog.url | prepend: site.baseurl }}">{{ blog.title }}</a> - {{ blog.date | date: "%B %d, %Y" }}</li>
-      {% endif %}
-    {% endfor %}
-  </ul>
+  {% capture current_year %}{{ blog.date | date: '%Y' }}{% endcapture %}
+  {% capture next_year %}{{ blog.previous.date | date: '%Y' }}{% endcapture %}
+  {% if forloop.first or current_year != next_year %}
+    <h2>{{ current_year }}</h2>
+  {% endif %}
+  {% capture current_month %}{{ blog.date | date: '%B' }}{% endcapture %}
+  {% capture next_month %}{{ blog.previous.date | date: '%B' }}{% endcapture %}
+  {% if forloop.first or current_month != next_month or current_year != next_year %}
+    <h3>{{ current_month }}</h3>
+    <ul>
+  {% endif %}
+      <li><a href="{{ blog.url | prepend: site.baseurl }}">{{ blog.title }}</a> - {{ blog.date | date: "%B %d, %Y" }}</li>
+  {% if forloop.last or current_month != next_month or current_year != next_year %}
+    </ul>
+  {% endif %}
 {% endfor %}
+
 
 ## Projects
 {% assign projects_by_year = site.projects | sort: 'date' | reverse %}
