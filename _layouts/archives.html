@@ -46,21 +46,21 @@ refactor: true
 {% endfor %}
 
 
-## Walkthroughs
-{% assign Walkthroughs_by_year = site.Walkthroughs | sort: 'date' | reverse %}
-{% for Walkthrough in Walkthroughs_by_year %}
-  {% unless Walkthrough.previous %}
-    <h2>{{ Walkthrough.date | date: '%Y' }}</h2>
+## walkthroughs
+{% assign walkthroughs_by_year = site.walkthroughs | sort: 'date' | reverse %}
+{% for walkthrough in walkthroughs_by_year %}
+  {% unless walkthrough.previous %}
+    <h2>{{ walkthrough.date | date: '%Y' }}</h2>
   {% else %}
-    {% unless Walkthrough.date | date: '%Y' == Walkthrough.previous.date | date: '%Y' %}
-      <h2>{{ Walkthrough.date | date: '%Y' }}</h2>
+    {% unless walkthrough.date | date: '%Y' == walkthrough.previous.date | date: '%Y' %}
+      <h2>{{ walkthrough.date | date: '%Y' }}</h2>
     {% endunless %}
   {% endunless %}
-  <h3>{{ Walkthrough.date | date: '%B' }}</h3>
+  <h3>{{ walkthrough.date | date: '%B' }}</h3>
   <ul>
-    {% for Walkthrough in Walkthroughs_by_year %}
-      {% if Walkthrough.date | date: '%Y' == Walkthrough.previous.date | date: '%Y' and Walkthrough.date | date: '%B' == Walkthrough.previous.date | date: '%B' %}
-        <li><a href="{{ Walkthrough.url | prepend: site.baseurl }}">{{ Walkthrough.title }}</a> - {{ Walkthrough.date | date: "%B %d, %Y" }}</li>
+    {% for walkthrough in walkthroughs_by_year %}
+      {% if walkthrough.date | date: '%Y' == walkthrough.previous.date | date: '%Y' and walkthrough.date | date: '%B' == walkthrough.previous.date | date: '%B' %}
+        <li><a href="{{ walkthrough.url | prepend: site.baseurl }}">{{ walkthrough.title }}</a> - {{ walkthrough.date | date: "%B %d, %Y" }}</li>
       {% endif %}
     {% endfor %}
   </ul>
