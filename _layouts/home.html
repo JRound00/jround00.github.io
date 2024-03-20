@@ -1,0 +1,36 @@
+---
+layout: home
+title: Home
+---
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ page.title }}</title>
+</head>
+<body>
+    <header>
+        <h1>Welcome to my website!</h1>
+        <p>I'm James Round, a Cyber Security enthusiast. This is where I share my projects, Tryhackme walkthroughs, and insights into the world of Cyber Security.</p>
+    </header>
+
+    <section>
+        <h2>Recent Blog Posts</h2>
+        <ul>
+            {% for post in site.posts limit:5 %}
+            <li>
+                <a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
+                <p>{{ post.date | date: "%B %d, %Y" }}</p>
+            </li>
+            {% endfor %}
+        </ul>
+    </section>
+
+    <footer>
+        <p>Connect with me on <a href="https://github.com/JRound00">GitHub</a> and <a href="https://www.linkedin.com/in/jamesr2000">LinkedIn</a>.</p>
+    </footer>
+</body>
+</html>
