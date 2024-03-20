@@ -1,7 +1,7 @@
 ---
 title: Walkthroughs
 icon: fas fa-user-secret
-order: 5
+order: 2
 ---
 
 ## TryHackMe Walkthroughs

@@ -1,7 +1,7 @@
 ---
 title: Projects
 icon: fas fa-user-secret
-order: 5
+order: 3
 ---
 
 ## Projects 
