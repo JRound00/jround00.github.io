@@ -1,0 +1,27 @@
+.container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 20px;
+}
+
+.archives-header h1 {
+    font-size: 2em;
+}
+
+.year-title, .month-title {
+    margin-top: 20px;
+}
+
+.post-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.post-item a {
+    text-decoration: none;
+    color: #007bff; /* Example color */
+}
+
+.post-item a:hover {
+    text-decoration: underline;
+}

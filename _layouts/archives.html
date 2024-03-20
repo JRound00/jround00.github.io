@@ -2,69 +2,52 @@
 layout: default
 refactor: true
 ---
-# Archives
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Archives</title>
+    <!-- Add link to your CSS file -->
+    <link rel="stylesheet" href="/assets/css/archive.css">
+</head>
+<body>
+    <div class="container">
+        <header class="archives-header">
+            <h1>Archives</h1>
+            <p>This page lists all blogs, projects, and walkthroughs archived by year and month.</p>
+        </header>
 
-This page lists all blogs, projects, and walkthroughs archived by year and month.
+        <section class="archive-section">
+            <h2 class="archive-title">Blogs</h2>
+            {% assign blogs_by_year = site.blogs | sort: 'date' | reverse %}
+            {% for blog in blogs_by_year %}
+                {% capture current_year %}{{ blog.date | date: '%Y' }}{% endcapture %}
+                {% capture next_year %}{{ blog.previous.date | date: '%Y' }}{% endcapture %}
+                {% if forloop.first or current_year != next_year %}
+                    <div class="year-group">
+                        <h3 class="year-title">{{ current_year }}</h3>
+                {% endif %}
+                {% capture current_month %}{{ blog.date | date: '%B' }}{% endcapture %}
+                {% capture next_month %}{{ blog.previous.date | date: '%B' }}{% endcapture %}
+                {% if forloop.first or current_month != next_month or current_year != next_year %}
+                    <div class="month-group">
+                        <h4 class="month-title">{{ current_month }}</h4>
+                        <ul class="post-list">
+                {% endif %}
+                            <li class="post-item"><a href="{{ blog.url | prepend: site.baseurl }}">{{ blog.title }}</a> - {{ blog.date | date: "%B %d, %Y" }}</li>
+                {% if forloop.last or current_month != next_month or current_year != next_year %}
+                        </ul>
+                    </div>
+                {% endif %}
+                {% if forloop.last or current_year != next_year %}
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </section>
 
+        <!-- Repeat the structure for Projects and Walkthroughs sections -->
 
-## Blogs
-{% assign blogs_by_year = site.blogs | sort: 'date' | reverse %}
-{% for blog in blogs_by_year %}
-  {% capture current_year %}{{ blog.date | date: '%Y' }}{% endcapture %}
-  {% capture next_year %}{{ blog.previous.date | date: '%Y' }}{% endcapture %}
-  {% if forloop.first or current_year != next_year %}
-    <h2>{{ current_year }}</h2>
-  {% endif %}
-  {% capture current_month %}{{ blog.date | date: '%B' }}{% endcapture %}
-  {% capture next_month %}{{ blog.previous.date | date: '%B' }}{% endcapture %}
-  {% if forloop.first or current_month != next_month or current_year != next_year %}
-    <h3>{{ current_month }}</h3>
-    <ul>
-  {% endif %}
-      <li><a href="{{ blog.url | prepend: site.baseurl }}">{{ blog.title }}</a> - {{ blog.date | date: "%B %d, %Y" }}</li>
-  {% if forloop.last or current_month != next_month or current_year != next_year %}
-    </ul>
-  {% endif %}
-{% endfor %}
-
-
-## Projects
-{% assign projects_by_year = site.projects | sort: 'date' | reverse %}
-{% for project in projects_by_year %}
-  {% unless project.previous %}
-    <h2>{{ project.date | date: '%Y' }}</h2>
-  {% else %}
-    {% unless project.date | date: '%Y' == project.previous.date | date: '%Y' %}
-      <h2>{{ project.date | date: '%Y' }}</h2>
-    {% endunless %}
-  {% endunless %}
-  <h3>{{ project.date | date: '%B' }}</h3>
-  <ul>
-    {% for project in projects_by_year %}
-      {% if project.date | date: '%Y' == project.previous.date | date: '%Y' and project.date | date: '%B' == project.previous.date | date: '%B' %}
-        <li><a href="{{ project.url | prepend: site.baseurl }}">{{ project.title }}</a> - {{ project.date | date: "%B %d, %Y" }}</li>
-      {% endif %}
-    {% endfor %}
-  </ul>
-{% endfor %}
-
-
-## walkthroughs
-{% assign walkthroughs_by_year = site.walkthroughs | sort: 'date' | reverse %}
-{% for walkthrough in walkthroughs_by_year %}
-  {% unless walkthrough.previous %}
-    <h2>{{ walkthrough.date | date: '%Y' }}</h2>
-  {% else %}
-    {% unless walkthrough.date | date: '%Y' == walkthrough.previous.date | date: '%Y' %}
-      <h2>{{ walkthrough.date | date: '%Y' }}</h2>
-    {% endunless %}
-  {% endunless %}
-  <h3>{{ walkthrough.date | date: '%B' }}</h3>
-  <ul>
-    {% for walkthrough in walkthroughs_by_year %}
-      {% if walkthrough.date | date: '%Y' == walkthrough.previous.date | date: '%Y' and walkthrough.date | date: '%B' == walkthrough.previous.date | date: '%B' %}
-        <li><a href="{{ walkthrough.url | prepend: site.baseurl }}">{{ walkthrough.title }}</a> - {{ walkthrough.date | date: "%B %d, %Y" }}</li>
-      {% endif %}
-    {% endfor %}
-  </ul>
-{% endfor %}
+    </div>
+</body>
+</html>
